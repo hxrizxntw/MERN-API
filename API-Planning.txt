@@ -1,0 +1,82 @@
+Standar API
+{root.api}/{version}/{grouping}/{endpoint}
+http://mern-api.horizontdocs.com/v1/auth/login
+
+Standar Status Response
+200 - OK                    --> Call API succeed
+201 - CREATED               --> Post succeed
+400 - BAD REQUEST           --> Error on client side.
+401 - UNAUTHORIZED          --> User not authorized to request.
+403 - FORBIDDEN             --> User not allowed to access.
+404 - NOT FOUND             --> Request endpoint not found.
+500 - INTERNAL SERVER ERROR --> Error on server side.
+502 - BAD GATEWAY           --> Invalid response from another request.
+
+Grouping: Authentication
+1. Registration
+[GET]; {root.api}/{version}/auth/register
+req: {
+    "name": "nama",
+    "email": "nama@email.com",
+    "password": "katasandi"
+}
+res: {
+    "message": "Registration succeed",
+    "data": {
+        "_id": 1,
+        "name": "nama",
+        "email": "nama@email.com",
+        "password": "katasandi"
+    }
+}
+err-res:
+201 --> Registration succeed
+400 --> Invalid input
+
+2. Login
+[POST]: {root.api}/{version}/auth/login
+req: {
+    "email": "nama@email.com",
+    "password": "katasandi"
+}
+res: {
+    "message": "Registration succeed",
+    "data": {
+        "_id": 1,
+        "email": "nama@email.com",
+        "token": "dsafgsdg223r"
+    }
+}
+err-res:
+200 --> Login succeed
+400 --> Invalid input
+
+
+Grouping: Blog
+1. Create post
+[POST]: {root.api}/{version}/blog/post
+req: {
+    "title": "post title",
+    "image": "imagefile.jpg",
+    "body": "lorem ingsun jalaran saka kulina"
+}
+res: {
+    "message": "Create post succeed",
+    "data": {
+        "_id": 1,
+        "title": "post title",
+        "image": "imagefile.jpg",
+        "body": "lorem ingsun jalaran saka kulina",
+        "date_created": "17/08/2021",
+        "author": {
+            "uid": 1,
+            "name": "person name"
+        }
+    }
+}
+err-res:
+200 --> Create post succeed
+400 --> Invalid input
+2. Get post
+3. Update post
+4. Delete post
